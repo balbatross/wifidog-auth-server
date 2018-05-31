@@ -11,6 +11,12 @@ var cert = fs.readFileSync(conf.ssl.cert);
 
 app.use(WifiDog);
 
+http.createServer();
+
+http.get('*', (req, res) => {
+    res.redirect('https://'+req.headers.host + req.url);
+});
+
 https.createServer({
     key: key,
     cert: cert
