@@ -17,6 +17,8 @@ http.get('*', (req, res) => {
     res.redirect('https://'+req.headers.host + req.url);
 });
 
+http.listen(80);
+
 https.createServer({
     key: key,
     cert: cert
