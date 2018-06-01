@@ -7,12 +7,15 @@ var conf = require('./conf');
 var fs = require('fs');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
+var RedisStore = require('connect-redis')(session);
 
 var key = fs.readFileSync(conf.ssl.key);
 var cert = fs.readFileSync(conf.ssl.cert);
+var redisStore = new RedisStore();
 
 app.use(cookieParser('keyboard cat'));
 app.use(session({
+    store: redisStore, 
     name: 'app.sid',
     secret: 'keyboard cat',
     resave: true,
