@@ -23,7 +23,7 @@ app.use(session({
     cookie: {secure: true, httpOnly: false}
 }));
 
-app.use(WifiDog);
+app.use(WifiDog(redisStore));
 
 http.createServer(app).listen(80);
 
