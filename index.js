@@ -13,15 +13,7 @@ var key = fs.readFileSync(conf.ssl.key);
 var cert = fs.readFileSync(conf.ssl.cert);
 var redisStore = new RedisStore();
 
-app.use(cookieParser('keyboard cat'));
-app.use(session({
-    store: redisStore, 
-    name: 'app.sid',
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true,
-    cookie: {secure: true, httpOnly: false}
-}));
+app.use(cookieParser());
 
 app.use(WifiDog(redisStore));
 
