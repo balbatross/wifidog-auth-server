@@ -6,10 +6,12 @@ var app = express();
 var conf = require('./conf');
 var fs = require('fs');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
 
 var key = fs.readFileSync(conf.ssl.key);
 var cert = fs.readFileSync(conf.ssl.cert);
 
+app.use(cookieParser());
 app.use(session({
     name: 'app.sid',
     secret: 'keyboard cat',
