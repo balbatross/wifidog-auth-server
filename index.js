@@ -11,8 +11,9 @@ var key = fs.readFileSync(conf.ssl.key);
 var cert = fs.readFileSync(conf.ssl.cert);
 
 app.use(session({
+    name: 'app.sid',
     secret: 'keyboard cat',
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 
