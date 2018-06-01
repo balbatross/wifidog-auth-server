@@ -16,7 +16,8 @@ app.use(session({
     name: 'app.sid',
     secret: 'keyboard cat',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {secure: true, httpOnly: false}
 }));
 
 app.use(WifiDog);
